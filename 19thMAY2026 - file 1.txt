@@ -1,0 +1,38 @@
+use vitcampus;
+
+show tables from vitcampus;
+
+select * from worker;
+
+select first_name, department, salary from worker
+where department = 'admin' or salary >= 100000;
+
+select * from worker;
+
+select worker_id,first_name, department, salary from worker
+where worker_id in (1,6);
+
+select worker_id,first_name, department, salary from worker
+where worker_id not in (1,6,2);
+
+select * from worker 
+where salary between 105000 and 300000;
+
+select * from worker 
+where salary not between 105000 and 300000;
+
+select * from worker 
+where salary between 100000 and 300000
+and department not in ('hr','admin');
+
+select * from worker
+where salary between 200000 and 300000
+or department in ('hr','account');
+
+select * from worker
+where salary not between 100000 and 200000
+and department not in ('admin','account');
+
+
+
+
