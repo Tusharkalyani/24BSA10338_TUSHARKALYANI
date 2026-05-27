@@ -1,0 +1,91 @@
+use vitcampus;
+
+
+drop table persons;
+create table persons(
+	id int not null,
+    lastname varchar(256) not null,
+    firstname varchar(256) not null,
+    age int not null,
+    check (age>=18 and age <=23)
+);
+  
+desc persons;
+
+insert into persons values ( 1, 'kalyani','tushar',18);
+insert into persons values ( 2, NULL ,'tanvee',21);
+insert into persons values ( 3, 'kalyani','krishnaveni',44);
+insert into persons values ( 4, 'kalyani','mahesh',23);
+
+select * from persons;
+
+alter table persons 
+add unique(age);
+
+alter table persons 
+drop constraint age;
+
+create table persons1(
+	id int not null,
+    lastname varchar(256) not null,
+    firstname varchar(256) not null,
+    age int,
+    city varchar ( 50) default 'hyderabad'
+);
+
+desc persons1;
+
+create table products (
+	pid int primary key,
+    pname varchar(100) not null,
+    prefno int not null unique
+);
+
+desc products;
+
+insert into products values (101,'electronics',18992);
+insert into products values (201,'plastic',14252);
+
+select * from products;
+
+
+alter table persons1
+add primary key(ID);
+
+desc persons1;
+
+alter table persons1
+drop primary key;
+
+drop table products;
+
+create table catergory(
+	cid int primary key,
+    cname varchar(100) not null
+);
+
+insert into catergory values (101,'electronics'),(102,'homeappliancese');
+
+select * from catergory;
+
+create table products (
+	pid int primary key,
+	pname varchar(100) not null,
+    cid int,
+    foreign key (cid) references catergory(cid)
+);
+
+desc products;
+    
+insert into products values(501,'hp',101);
+insert into products values(506,'wooden cupboard',102);
+insert into products values(502,'power bank',101);
+
+delete from products where cid = 101;
+delete from catergory where cid = 101;
+
+select * from products;
+
+
+
+
