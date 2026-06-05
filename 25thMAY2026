@@ -1,0 +1,138 @@
+show databases
+
+Amazon       72.00 KiB
+Explora      80.00 KiB
+admin        40.00 KiB
+aurasilks   704.00 KiB
+calculator   72.00 KiB
+config       72.00 KiB
+local        80.00 KiB
+test         56.00 KiB
+whatsapp     72.00 KiB
+
+show dbs
+
+Amazon       72.00 KiB
+Explora      80.00 KiB
+admin        40.00 KiB
+aurasilks   704.00 KiB
+calculator   72.00 KiB
+config       72.00 KiB
+local        80.00 KiB
+test         56.00 KiB
+whatsapp     72.00 KiB
+
+use vit
+
+switched to db vit
+
+db
+
+vit
+
+db.dropDatabase()
+
+
+{ ok: 1, dropped: 'vit' }
+
+
+
+use vit
+
+already on db vit
+
+show dbs
+
+Amazon       72.00 KiB
+Explora      80.00 KiB
+admin        40.00 KiB
+aurasilks   704.00 KiB
+calculator   72.00 KiB
+config       72.00 KiB
+local        80.00 KiB
+test         56.00 KiB
+whatsapp     72.00 KiB
+
+ db.createCollection("student")
+
+
+{ ok: 1 }
+
+
+
+show collections
+
+student
+
+db.student.drop()
+
+
+true
+
+
+
+show collections
+
+
+
+db.createCollection("Employee")
+
+
+{ ok: 1 }
+
+
+
+db.Employee.insert({name : "tushar",department:"CSE"})
+
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+
+
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6a22b7bcccc218bc10d22826')
+  }
+}
+
+
+
+db.Employee.insert({name : "tanvee",marks:99,location : "bengaluru"})
+
+
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6a22b7f5ccc218bc10d22827')
+  }
+}
+
+
+
+db.Employee.find()
+
+
+{
+  _id: ObjectId('6a22b7bcccc218bc10d22826'),
+  name: 'tushar',
+  department: 'CSE'
+}
+
+
+
+{
+  _id: ObjectId('6a22b7f5ccc218bc10d22827'),
+  name: 'tanvee',
+  marks: 99,
+  location: 'bengaluru'
+}
+
+
+
+
+
+
+
+
+
+
+
