@@ -1,0 +1,1517 @@
+db
+Vitcampus
+show databases
+admin    40.00 KiB
+config   72.00 KiB
+local    64.00 KiB
+vit     176.00 KiB
+show collections
+db.products.drop()
+true
+db.products.insertMany([
+    { "_id" : 1, "name" : "xPhone", "price" : 799, "releaseDate": ISODate("2011-05-14"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 },"color":["white","black"],"storage":[64,128,256]},
+    { "_id" : 2, "name" : "xTablet", "price" : 899, "releaseDate": ISODate("2011-09-01") , "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 },"color":["white","black","purple"],"storage":[128,256,512]},
+    { "_id" : 3, "name" : "SmartTablet", "price" : 899, "releaseDate": ISODate("2015-01-14"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 },"color":["blue"],"storage":[16,64,128]},
+    { "_id" : 4, "name" : "SmartPad", "price" : 699, "releaseDate": ISODate("2020-05-14"),"spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256,1024]},
+    { "_id" : 5, "name" : "SmartPhone", "price" : 599,"releaseDate": ISODate("2022-09-14"), "spec" : { "ram" : 4, "screen" : 5.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256]}
+ ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5
+  }
+}
+db.products.find({
+    price: {
+        $gte: 799
+    }
+}, {
+    name: 1,
+    price: 1
+})
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899
+}
+db.products.find({
+    "spec.screen": {
+        $gte: 9.5
+    }
+}, {
+    name: 1,
+    "spec.screen": 1
+})
+{
+  _id: 2,
+  name: 'xTablet',
+  spec: {
+    screen: 9.5
+  }
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  spec: {
+    screen: 9.7
+  }
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  spec: {
+    screen: 9.7
+  }
+}
+db.products.find({
+    storage: {
+        $gte: 512
+    }
+}, {
+    name: 1,
+    storage: 1
+})
+{
+  _id: 2,
+  name: 'xTablet',
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+db.products.find({
+    "releaseDate": {
+        $gte: new ISODate('2020-05-14')
+    }
+}, {
+    name: 1,
+    releaseDate: 1
+});
+{
+  _id: 4,
+  name: 'SmartPad',
+  releaseDate: 2020-05-14T00:00:00.000Z
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  releaseDate: 2022-09-14T00:00:00.000Z
+}
+db.products.drop()
+true
+db.products.insertMany([
+    { "_id" : 1, "name" : "xPhone", "price" : 799, "releaseDate": ISODate("2011-05-14"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 },"color":["white","black"],"storage":[64,128,256]},
+    { "_id" : 2, "name" : "xTablet", "price" : 899, "releaseDate": ISODate("2011-09-01") , "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 },"color":["white","black","purple"],"storage":[128,256,512]},
+    { "_id" : 3, "name" : "SmartTablet", "price" : 899, "releaseDate": ISODate("2015-01-14"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 },"color":["blue"],"storage":[16,64,128]},
+    { "_id" : 4, "name" : "SmartPad", "price" : 699, "releaseDate": ISODate("2020-05-14"),"spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256,1024]},
+    { "_id" : 5, "name" : "SmartPhone", "price" : 599,"releaseDate": ISODate("2022-09-14"), "spec" : { "ram" : 4, "screen" : 9.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256]}
+,
+    { "_id" : 6, "name" : "xWidget", "spec" : { "ram" : 64, "screen" : 9.7, "cpu" : 3.66 },"color":["black"],"storage":[1024]}
+ ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5,
+    '5': 6
+  }
+}
+db.products.find({
+    price: {
+        $ne: 899
+    }
+}, {
+    name: 1,
+    price: 1
+})
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599
+}
+{
+  _id: 6,
+  name: 'xWidget'
+}
+db.products.find({
+    "spec.screen": {
+        $ne: 9.7
+    }
+SyntaxError: Unexpected token, expected "," (5:0)
+
+  3 |         $ne: 9.7
+  4 |     }
+> 5 |
+    | ^
+db.products.find({
+    "spec.screen": {
+        $ne: 9.7
+    }
+SyntaxError: Unexpected token, expected "," (5:0)
+
+  3 |         $ne: 9.7
+  4 |     }
+> 5 |
+    | ^
+db.products.find({
+    "spec.screen": {
+        $ne: 9.7
+    }
+}, {
+    name: 1,
+    "spec.screen": 1
+})
+{
+  _id: 1,
+  name: 'xPhone',
+  spec: {
+    screen: 6.5
+  }
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  spec: {
+    screen: 9.5
+  }
+}
+db.products.find({
+    storage: {
+        $ne: 128
+    }
+}, {
+    name: 1,    storage: 1
+});
+{
+  _id: 6,
+  name: 'xWidget',
+  storage: [
+    1024
+  ]
+}
+db.products.find({
+    releaseDate: {
+        $ne: new ISODate('2015-01-14')
+    }
+}, {
+    name: 1,
+    releaseDate: 1
+});
+{
+  _id: 1,
+  name: 'xPhone',
+  releaseDate: 2011-05-14T00:00:00.000Z
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  releaseDate: 2011-09-01T00:00:00.000Z
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  releaseDate: 2020-05-14T00:00:00.000Z
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  releaseDate: 2022-09-14T00:00:00.000Z
+}
+{
+  _id: 6,
+  name: 'xWidget'
+}
+db.products.drop()
+true
+db.products.insertMany([
+    { "_id" : 1, "name" : "xPhone", "price" : 799, "releaseDate": ISODate("2011-05-14"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 },"color":["white","black"],"storage":[64,128,256]},
+    { "_id" : 2, "name" : "xTablet", "price" : 899, "releaseDate": ISODate("2011-09-01") , "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 },"color":["white","black","purple"],"storage":[128,256,512]},
+    { "_id" : 3, "name" : "SmartTablet", "price" : 899, "releaseDate": ISODate("2015-01-14"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 },"color":["blue"],"storage":[16,64,128]},
+    { "_id" : 4, "name" : "SmartPad", "price" : 699, "releaseDate": ISODate("2020-05-14"),"spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256,1024]},
+    { "_id" : 5, "name" : "SmartPhone", "price" : 599,"releaseDate": ISODate("2022-09-14"), "spec" : { "ram" : 4, "screen" : 5.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256]}
+ ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5
+  }
+}
+db.products.find({
+    price: {
+        $in: [699, 799]
+    }
+}, {
+    name: 1,
+    price: 1
+})
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699
+}
+db.products.find({
+    color: {
+        $in: ["black", "white"]
+    }
+}, {
+    name: 1,
+    color: 1
+})
+{
+  _id: 1,
+  name: 'xPhone',
+  color: [
+    'white',
+    'black'
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  color: [
+    'white',
+    'black',
+    'purple'
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ]
+}
+db.products.find({
+    color: {
+        $in: [/^g+/, /^w+/]
+    }
+}, {
+    name: 1,
+    color: 1
+})
+{
+  _id: 1,
+  name: 'xPhone',
+  color: [
+    'white',
+    'black'
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  color: [
+    'white',
+    'black',
+    'purple'
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ]
+}
+db.products.drop()
+true
+db.products.insertMany([
+    { "_id" : 1, "name" : "xPhone", "price" : 799, "releaseDate": ISODate("2011-05-14"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 },"color":["white","black"],"storage":[64,128,256]},
+    { "_id" : 2, "name" : "xTablet", "price" : 899, "releaseDate": ISODate("2011-09-01") , "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 },"color":["white","black","purple"],"storage":[128,256,512]},
+    { "_id" : 3, "name" : "SmartTablet", "price" : 899, "releaseDate": ISODate("2015-01-14"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 },"color":["blue"],"storage":[16,64,128]},
+    { "_id" : 4, "name" : "SmartPad", "price" : 699, "releaseDate": ISODate("2020-05-14"),"spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256,1024]},
+    { "_id" : 5, "name" : "SmartPhone", "price" : 599,"releaseDate": ISODate("2022-09-14"), "spec" : { "ram" : 4, "screen" : 5.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256]}
+ ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5
+  }
+}
+db.products.find({
+    price: {
+        $nin: [699, 799]
+    }
+}, {
+    name: 1,
+    price: 1
+})
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599
+}
+db.products.find({
+    color: {
+        $nin: ["black", "white"]
+    }
+}, {
+    name: 1,
+    color: 1
+})
+{
+  _id: 3,
+  name: 'SmartTablet',
+  color: [
+    'blue'
+  ]
+}
+db.products.find({
+    color: {
+        $nin: [/^g+/, /^w+/]
+    }
+}, {
+    name: 1,
+    color: 1
+})
+{
+  _id: 3,
+  name: 'SmartTablet',
+  color: [
+    'blue'
+  ]
+}
+db.products.drop()
+true
+db.products.insertMany([
+	{ "_id" : 1, "name" : "xPhone", "price" : 799, "releaseDate" : ISODate("2011-05-14T00:00:00Z"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 }, "color" : [ "white", "black" ], "storage" : [ 64, 128, 256 ] },
+	{ "_id" : 2, "name" : "xTablet", "price" : 899, "releaseDate" : ISODate("2011-09-01T00:00:00Z"), "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 }, "color" : [ "white", "black", "purple" ], "storage" : [ 128, 256, 512 ] },
+	{ "_id" : 3, "name" : "SmartTablet", "price" : 899, "releaseDate" : ISODate("2015-01-14T00:00:00Z"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 }, "color" : [ "blue" ], "storage" : [ 16, 64, 128 ] },
+	{ "_id" : 4, "name" : "SmartPad", "price" : 699, "releaseDate" : ISODate("2020-05-14T00:00:00Z"), "spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 }, "color" : [ "white", "orange", "gold", "gray" ], "storage" : [ 128, 256, 1024 ] },
+	{ "_id" : 5, "name" : "SmartPhone", "price" : 599, "releaseDate" : ISODate("2022-09-14T00:00:00Z"), "spec" : { "ram" : 4, "screen" : 9.7, "cpu" : 1.66 }, "color" : [ "white", "orange", "gold", "gray" ], "storage" : [ 128, 256 ] },
+	{ "_id" : 6, "name" : "xWidget", "spec" : { "ram" : 64, "screen" : 9.7, "cpu" : 3.66 }, "color" : [ "black" ], "storage" : [ 1024 ] }
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5,
+    '5': 6
+  }
+}
+db.products.find({
+    $and: [{
+        price: 899
+    }, {
+        color: {
+            $in: ["white", "black"]
+        }
+    }]
+}, {
+    name: 1,
+    price: 1,
+    color: 1
+})
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  color: [
+    'white',
+    'black',
+    'purple'
+  ]
+}
+db.products.find({
+    $and: [{
+        price: 699
+    }, {
+        price: {
+            $exists: true
+        }
+    }]
+}, {
+    name: 1,
+    price: 1,
+    color: 1
+})
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ]
+}
+db.products.find({
+    price: {
+        $eq: 699,
+        $exists: true
+    }
+}, {
+    name: 1,
+    price: 1,
+    color: 1
+})
+
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ]
+}
+db.products.drop()
+true
+db.products.insertMany([
+	{ "_id" : 1, "name" : "xPhone", "price" : 799, "releaseDate" : ISODate("2011-05-14T00:00:00Z"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 }, "color" : [ "white", "black" ], "storage" : [ 64, 128, 256 ] },
+	{ "_id" : 2, "name" : "xTablet", "price" : 899, "releaseDate" : ISODate("2011-09-01T00:00:00Z"), "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 }, "color" : [ "white", "black", "purple" ], "storage" : [ 128, 256, 512 ] },
+	{ "_id" : 3, "name" : "SmartTablet", "price" : 899, "releaseDate" : ISODate("2015-01-14T00:00:00Z"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 }, "color" : [ "blue" ], "storage" : [ 16, 64, 128 ] },
+	{ "_id" : 4, "name" : "SmartPad", "price" : 699, "releaseDate" : ISODate("2020-05-14T00:00:00Z"), "spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 }, "color" : [ "white", "orange", "gold", "gray" ], "storage" : [ 128, 256, 1024 ] },
+	{ "_id" : 5, "name" : "SmartPhone", "price" : 599, "releaseDate" : ISODate("2022-09-14T00:00:00Z"), "spec" : { "ram" : 4, "screen" : 9.7, "cpu" : 1.66 }, "color" : [ "white", "orange", "gold", "gray" ], "storage" : [ 128, 256 ] }
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5
+  }
+}
+db.products.find({
+    $or: [{
+        price: 799
+    }, {
+        price: 899
+    }]
+}, {
+    name: 1,
+    price: 1
+})
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899
+}
+db.products.find({
+    price: {
+        $in: [799, 899]
+    }
+}, {
+    name: 1,
+    price: 1
+})
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899
+}
+db.products.find({
+    $or: [
+        { price: {$lt: 699} },
+        { price: {$gt: 799} }
+    ]
+}, {
+    name: 1,
+    price: 1
+})
+
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599
+}
+db.products.drop()
+true
+db.products.insertMany([
+	{ "_id" : 1, "name" : "xPhone", "price" : 799, "releaseDate" : ISODate("2011-05-14T00:00:00Z"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 }, "color" : [ "white", "black" ], "storage" : [ 64, 128, 256 ] },
+	{ "_id" : 2, "name" : "xTablet", "price" : 899, "releaseDate" : ISODate("2011-09-01T00:00:00Z"), "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 }, "color" : [ "white", "black", "purple" ], "storage" : [ 128, 256, 512 ] },
+	{ "_id" : 3, "name" : "SmartTablet", "price" : 899, "releaseDate" : ISODate("2015-01-14T00:00:00Z"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 }, "color" : [ "blue" ], "storage" : [ 16, 64, 128 ] },
+	{ "_id" : 4, "name" : "SmartPad", "price" : 699, "releaseDate" : ISODate("2020-05-14T00:00:00Z"), "spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 }, "color" : [ "white", "orange", "gold", "gray" ], "storage" : [ 128, 256, 1024 ] },
+	{ "_id" : 5, "name" : "SmartPhone", "price" : 599, "releaseDate" : ISODate("2022-09-14T00:00:00Z"), "spec" : { "ram" : 4, "screen" : 9.7, "cpu" : 1.66 }, "color" : [ "white", "orange", "gold", "gray" ], "storage" : [ 128, 256 ] },
+	{ "_id" : 6, "name" : "xWidget", "spec" : { "ram" : 64, "screen" : 9.7, "cpu" : 3.66 }, "color" : [ "black" ], "storage" : [ 1024 ] }
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5,
+    '5': 6
+  }
+}
+db.products.find({
+    price: {
+        $not: {
+            $gt: 699
+        }
+    }
+}, {
+    name: 1,
+    price: 1
+})
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599
+}
+{
+  _id: 6,
+  name: 'xWidget'
+}
+db.products.find({
+    price: {
+        $lte: 699
+    }
+}, {
+    name: 1,
+    price: 1
+})
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599
+}
+db.products.find({
+    name: {
+        $not: /^Smart+/
+    }
+}, {
+    name: 1
+})
+{
+  _id: 1,
+  name: 'xPhone'
+}
+{
+  _id: 2,
+  name: 'xTablet'
+}
+{
+  _id: 6,
+  name: 'xWidget'
+}
+db.products.drop()
+true
+db.products.insertMany([
+	{ "_id" : 1, "name" : "xPhone", "price" : 799, "releaseDate" : ISODate("2011-05-14T00:00:00Z"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 }, "color" : [ "white", "black" ], "storage" : [ 64, 128, 256 ] },
+	{ "_id" : 2, "name" : "xTablet", "price" : 899, "releaseDate" : ISODate("2011-09-01T00:00:00Z"), "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 }, "color" : [ "white", "black", "purple" ], "storage" : [ 128, 256, 512 ] },
+	{ "_id" : 3, "name" : "SmartTablet", "price" : 899, "releaseDate" : ISODate("2015-01-14T00:00:00Z"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 }, "color" : [ "blue" ], "storage" : [ 16, 64, 128 ] },
+	{ "_id" : 4, "name" : "SmartPad", "price" : 699, "releaseDate" : ISODate("2020-05-14T00:00:00Z"), "spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 }, "color" : [ "white", "orange", "gold", "gray" ], "storage" : [ 128, 256, 1024 ] },
+	{ "_id" : 5, "name" : "SmartPhone", "price" : 599, "releaseDate" : ISODate("2022-09-14T00:00:00Z"), "spec" : { "ram" : 4, "screen" : 9.7, "cpu" : 1.66 }, "color" : [ "white", "orange", "gold", "gray" ], "storage" : [ 128, 256 ] },
+	{ "_id" : 6, "name" : "xWidget", "spec" : { "ram" : 64, "screen" : 9.7, "cpu" : 3.66 }, "color" : [ "black" ], "storage" : [ 1024 ] }
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5,
+    '5': 6
+  }
+}
+db.products.find({
+    $nor :[
+        { price: 899},
+        { color: "gold"}
+    ]
+}, {
+    name: 1,
+    price: 1, 
+    color: 1
+})
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  color: [
+    'white',
+    'black'
+  ]
+}
+{
+  _id: 6,
+  name: 'xWidget',
+  color: [
+    'black'
+  ]
+}
+// Exclude products with price = 599 OR color = "white"
+db.products.find({
+    $nor: [
+        { price: 599 },
+        { color: "white" }
+    ]
+}, {
+    name: 1,
+    price: 1,
+    color: 1
+})
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  color: [
+    'blue'
+  ]
+}
+{
+  _id: 6,
+  name: 'xWidget',
+  color: [
+    'black'
+  ]
+}
+db.products.find({
+    $nor: [
+        { "spec.ram": 4 },
+        { "inventory.warehouse": "San Jose" }
+    ]
+}, {
+    name: 1,
+    "spec.ram": 1,
+    "inventory.warehouse": 1
+})
+{
+  _id: 2,
+  name: 'xTablet',
+  spec: {
+    ram: 16
+  }
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  spec: {
+    ram: 12
+  }
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  spec: {
+    ram: 8
+  }
+}
+{
+  _id: 6,
+  name: 'xWidget',
+  spec: {
+    ram: 64
+  }
+}
+db.products.find({
+    $nor: [
+        { price: 699 },
+        { color: "black" }
+    ]
+}, {
+    name: 1,
+    price: 1,
+    color: 1
+})
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  color: [
+    'blue'
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ]
+}
+db.products.find({
+    $nor: [
+        { "spec.ram": 4 },
+        { storage: 256 }
+    ]
+}, {
+    name: 1,
+    "spec.ram": 1,
+    storage: 1
+})
+{
+  _id: 3,
+  name: 'SmartTablet',
+  spec: {
+    ram: 12
+  },
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+{
+  _id: 6,
+  name: 'xWidget',
+  spec: {
+    ram: 64
+  },
+  storage: [
+    1024
+  ]
+}
+db.products.find({
+    $nor: [
+        { releaseDate: { $lt: ISODate("2015-01-01T00:00:00Z") } },
+        { "spec.cpu": 1.66 }
+    ]
+}, {
+    name: 1,
+    releaseDate: 1,
+    "spec.cpu": 1
+})
+{
+  _id: 3,
+  name: 'SmartTablet',
+  releaseDate: 2015-01-14T00:00:00.000Z,
+  spec: {
+    cpu: 3.66
+  }
+}
+{
+  _id: 6,
+  name: 'xWidget',
+  spec: {
+    cpu: 3.66
+  }
+}
+db.products.find({
+    $nor: [
+        { price: 899 },
+        { color: "gold" },
+        { "spec.ram": 16 }
+    ]
+}, {
+    name: 1,
+    price: 1,
+    color: 1,
+    "spec.ram": 1
+})
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  spec: {
+    ram: 4
+  },
+  color: [
+    'white',
+    'black'
+  ]
+}
+{
+  _id: 6,
+  name: 'xWidget',
+  spec: {
+    ram: 64
+  },
+  color: [
+    'black'
+  ]
+}
+db.products.find({
+    $nor: [
+        { releaseDate: { $exists: false } },
+        { price: { $exists: false } }
+    ]
+}, {
+    name: 1,
+    price: 1,
+    releaseDate: 1
+})
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  releaseDate: 2011-05-14T00:00:00.000Z
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  releaseDate: 2011-09-01T00:00:00.000Z
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  releaseDate: 2015-01-14T00:00:00.000Z
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  releaseDate: 2022-09-14T00:00:00.000Z
+}
+db.products.find({
+    price: { $not: { $lt: 800 } }
+}, {
+    name: 1,
+    price: 1
+})
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899
+}
+{
+  _id: 6,
+  name: 'xWidget'
+}
+db.products.find({
+    "spec.ram": { $not: { $eq: 4 } }
+}, {
+    name: 1,
+    "spec.ram": 1
+})
+{
+  _id: 2,
+  name: 'xTablet',
+  spec: {
+    ram: 16
+  }
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  spec: {
+    ram: 12
+  }
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  spec: {
+    ram: 8
+  }
+}
+{
+  _id: 6,
+  name: 'xWidget',
+  spec: {
+    ram: 64
+  }
+}
+db.products.find({
+    name: { $not: /^x/ }
+}, {
+    name: 1
+})
+{
+  _id: 3,
+  name: 'SmartTablet'
+}
+{
+  _id: 4,
+  name: 'SmartPad'
+}
+{
+  _id: 5,
+  name: 'SmartPhone'
+}
+db.products.find({
+    $and: [
+        { price: { $not: { $gt: 899 } } },
+        { color: { $not: { $eq: "gold" } } }
+    ]
+}, {
+    name: 1,
+    price: 1,
+    color: 1
+})
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  color: [
+    'white',
+    'black'
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  color: [
+    'white',
+    'black',
+    'purple'
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  color: [
+    'blue'
+  ]
+}
+{
+  _id: 6,
+  name: 'xWidget',
+  color: [
+    'black'
+  ]
+}
+db.products.find({
+    $or: [
+        { price: 599 },
+        { "spec.ram": 16 }
+    ]
+}, {
+    name: 1,
+    price: 1,
+    "spec.ram": 1
+})
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  spec: {
+    ram: 16
+  }
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  spec: {
+    ram: 4
+  }
+}
+db.products.find({
+    storage: { $in: [128, 1024] }
+}, {
+    name: 1,
+    storage: 1
+})
+{
+  _id: 1,
+  name: 'xPhone',
+  storage: [
+    64,
+    128,
+    256
+  ]
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  storage: [
+    128,
+    256,
+    512
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  storage: [
+    16,
+    64,
+    128
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  storage: [
+    128,
+    256,
+    1024
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  storage: [
+    128,
+    256
+  ]
+}
+{
+  _id: 6,
+  name: 'xWidget',
+  storage: [
+    1024
+  ]
+}
+db.products.find({
+    $or: [
+        { price: { $lt: 700 } },
+        { "spec.screen": { $gt: 9 } }
+    ]
+}, {
+    name: 1,
+    price: 1,
+    "spec.screen": 1
+})
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899,
+  spec: {
+    screen: 9.5
+  }
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  spec: {
+    screen: 9.7
+  }
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  spec: {
+    screen: 9.7
+  }
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  spec: {
+    screen: 9.7
+  }
+}
+{
+  _id: 6,
+  name: 'xWidget',
+  spec: {
+    screen: 9.7
+  }
+}
+db.products.find({
+    color: { $in: ["gold", "purple"] }
+}, {
+    name: 1,
+    color: 1
+})
+{
+  _id: 2,
+  name: 'xTablet',
+  color: [
+    'white',
+    'black',
+    'purple'
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ]
+}
+db.products.find({
+    $or: [
+        { price: 799 },
+        { color: { $in: ["orange", "blue"] } }
+    ]
+}, {
+    name: 1,
+    price: 1,
+    color: 1
+})
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  color: [
+    'white',
+    'black'
+  ]
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899,
+  color: [
+    'blue'
+  ]
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ]
+}
+db.products.find({
+    $and: [
+        { price: { $gt: 600 } },
+        { "spec.screen": { $lt: 9 } }
+    ]
+}, {
+    name: 1,
+    price: 1,
+    "spec.screen": 1
+})
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  spec: {
+    screen: 6.5
+  }
+}
+// Find products released after 2015 AND price < 800
+db.products.find({
+    $and: [
+        { releaseDate: { $gt: ISODate("2015-01-01T00:00:00Z") } },
+        { price: { $lt: 800 } }
+    ]
+}, {
+    name: 1,
+    releaseDate: 1,
+    price: 1
+})
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  releaseDate: 2020-05-14T00:00:00.000Z
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  releaseDate: 2022-09-14T00:00:00.000Z
+}
+// Find products where RAM = 4 AND CPU = 2.66 AND price = 799
+db.products.find({
+    $and: [
+        { "spec.ram": 4 },
+        { "spec.cpu": 2.66 },
+        { price: 799 }
+    ]
+}, {
+    name: 1,
+    "spec.ram": 1,
+    "spec.cpu": 1,
+    price: 1
+})
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799,
+  spec: {
+    ram: 4,
+    cpu: 2.66
+  }
+}
+// Find products where price is either 599 or 699
+db.products.find({
+    price: { $in: [599, 699] }
+}, {
+    name: 1,
+    price: 1
+})
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599
+}
+// Find products where price is either 599 or 699
+// AND color includes either "white" or "blue"
+db.products.find({
+    $and: [
+        { price: { $in: [599, 699] } },
+        { color: { $in: ["white", "blue"] } }
+    ]
+}, {
+    name: 1,
+    price: 1,
+    color: 1
+})
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699,
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ]
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599,
+  color: [
+    'white',
+    'orange',
+    'gold',
+    'gray'
+  ]
+}
+// Find products where storage does NOT include 128 or 256
+// AND RAM is NOT in [4, 8]
+db.products.find({
+    $and: [
+        { storage: { $nin: [128, 256] } },
+        { "spec.ram": { $nin: [4, 8] } }
+    ]
+}, {
+    name: 1,
+    storage: 1,
+    "spec.ram": 1
+})
+{
+  _id: 6,
+  name: 'xWidget',
+  spec: {
+    ram: 64
+  },
+  storage: [
+    1024
+  ]
+}
+// Find products where RAM = 16 AND CPU = 3.66
+db.products.find({
+    $and: [
+        { "spec.ram": { $eq: 16 } },
+        { "spec.cpu": { $eq: 3.66 } }
+    ]
+}, {
+    name: 1,
+    "spec.ram": 1,
+    "spec.cpu": 1
+})
+{
+  _id: 2,
+  name: 'xTablet',
+  spec: {
+    ram: 16,
+    cpu: 3.66
+  }
+}
+// Find products where name is NOT "SmartTablet"
+// OR price is NOT 899
+db.products.find({
+    $or: [
+        { name: { $ne: "SmartTablet" } },
+        { price: { $ne: 899 } }
+    ]
+}, {
+    name: 1,
+    price: 1
+})
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 799
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899
+}
+{
+  _id: 4,
+  name: 'SmartPad',
+  price: 699
+}
+{
+  _id: 5,
+  name: 'SmartPhone',
+  price: 599
+}
+{
+  _id: 6,
+  name: 'xWidget'
+}
+Vitcampus
+
