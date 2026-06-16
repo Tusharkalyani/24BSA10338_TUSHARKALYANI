@@ -1,0 +1,219 @@
+Last login: Tue Jun 16 17:42:52 on ttys002
+COLORTERM=truecolor
+FPATH=/opt/homebrew/share/zsh/site-functions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.9/functions
+HOME=/Users/tusharkalyani
+HOMEBREW_CELLAR=/opt/homebrew/Cellar
+HOMEBREW_PREFIX=/opt/homebrew
+HOMEBREW_REPOSITORY=/opt/homebrew
+INFOPATH=/opt/homebrew/share/info:
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-26.jdk/Contents/Home
+LANG=en_IN.UTF-8
+LOGNAME=tusharkalyani
+OLDPWD=/Users/tusharkalyani
+OSLogRateLimit=64
+PATH=/opt/homebrew/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin
+PWD=/Users/tusharkalyani
+SHELL=/bin/zsh
+SHLVL=1
+SSH_AUTH_SOCK=/var/run/com.apple.launchd.7Om2VuQHPN/Listeners
+TERM=xterm-256color
+TERM_PROGRAM=Apple_Terminal
+TERM_PROGRAM_VERSION=470.2
+TERM_SESSION_ID=4E36EBD6-CB5C-4644-AF29-DE564C6CE990
+TMPDIR=/var/folders/w6/xh9133p96qz03y4cl2h3v4w00000gn/T/
+USER=tusharkalyani
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+__CFBundleIdentifier=com.apple.Terminal
+tusharkalyani@TUSHARs-MacBook-Air ~ % clear
+tusharkalyani@TUSHARs-MacBook-Air ~ % pgrep mongod
+tusharkalyani@TUSHARs-MacBook-Air ~ % brew --version
+Homebrew 6.0.2
+tusharkalyani@TUSHARs-MacBook-Air ~ % brew list | grep mongodb
+mongodb-community@7.0
+mongodb-database-tools
+tusharkalyani@TUSHARs-MacBook-Air ~ % mongosh
+Current Mongosh Log ID:	6a3140bcb64f4fc3333d324b
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.8.3
+MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017
+tusharkalyani@TUSHARs-MacBook-Air ~ % brew services list | grep mongo
+mongodb-community@7.0 none                 
+tusharkalyani@TUSHARs-MacBook-Air ~ % brew services start mongodb-community@7.0
+==> Successfully started `mongodb-community@7.0` (label: homebrew.mxcl.mongodb-community@7.0)
+tusharkalyani@TUSHARs-MacBook-Air ~ % pgrep mongod
+30233
+tusharkalyani@TUSHARs-MacBook-Air ~ % mongosh
+Current Mongosh Log ID:	6a31411afc612a7d1ef9dc22
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.8.3
+Using MongoDB:		7.0.29
+Using Mongosh:		2.8.3
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-06-16T17:56:47.457+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> 
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+test> exit
+tusharkalyani@TUSHARs-MacBook-Air ~ % "C:\Program Files\MongoDB\Server\8.0\bin\mongod.exe" --replSet tusharkalyani@TUSHARs-MacBook-Air ~ % "C:\Program Files\MongoDB\Server\8.0\bin\mongod.exe" --replSet myReplSet --dbpath C:\data\db0 --port 270djnvd dvdv           
+zsh: command not found: C:\Program Files\MongoDB\Server\8.0\bin\mongod.exe
+tusharkalyani@TUSHARs-MacBook-Air ~ % 
+Last login: Tue Jun 16 17:54:24 on ttys000
+COLORTERM=truecolor
+FPATH=/opt/homebrew/share/zsh/site-functions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.9/functions
+HOME=/Users/tusharkalyani
+HOMEBREW_CELLAR=/opt/homebrew/Cellar
+HOMEBREW_PREFIX=/opt/homebrew
+HOMEBREW_REPOSITORY=/opt/homebrew
+INFOPATH=/opt/homebrew/share/info:
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-26.jdk/Contents/Home
+LANG=en_IN.UTF-8
+LOGNAME=tusharkalyani
+OLDPWD=/Users/tusharkalyani
+OSLogRateLimit=64
+PATH=/opt/homebrew/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin
+PWD=/Users/tusharkalyani
+SHELL=/bin/zsh
+SHLVL=1
+SSH_AUTH_SOCK=/var/run/com.apple.launchd.7Om2VuQHPN/Listeners
+TERM=xterm-256color
+TERM_PROGRAM=Apple_Terminal
+TERM_PROGRAM_VERSION=470.2
+TERM_SESSION_ID=354E7A4B-3E6E-4C21-A8D4-6FDB3D75892C
+TMPDIR=/var/folders/w6/xh9133p96qz03y4cl2h3v4w00000gn/T/
+USER=tusharkalyani
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+__CFBundleIdentifier=com.apple.Terminal
+tusharkalyani@TUSHARs-MacBook-Air ~ % "C:\Program Files\MongoDB\Server\8.0\bin\mongod.exe" --replSet myReplSet --dbpath C:\data\db0 --port 27017 --bind_ip localhost
+zsh: command not found: C:\Program Files\MongoDB\Server\8.0\bin\mongod.exe
+tusharkalyani@TUSHARs-MacBook-Air ~ % 
+Last login: Tue Jun 16 18:26:16 on ttys001
+COLORTERM=truecolor
+FPATH=/opt/homebrew/share/zsh/site-functions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.9/functions
+HOME=/Users/tusharkalyani
+HOMEBREW_CELLAR=/opt/homebrew/Cellar
+HOMEBREW_PREFIX=/opt/homebrew
+HOMEBREW_REPOSITORY=/opt/homebrew
+INFOPATH=/opt/homebrew/share/info:
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-26.jdk/Contents/Home
+LANG=en_IN.UTF-8
+LOGNAME=tusharkalyani
+OLDPWD=/Users/tusharkalyani
+OSLogRateLimit=64
+PATH=/opt/homebrew/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin
+PWD=/Users/tusharkalyani
+SHELL=/bin/zsh
+SHLVL=1
+SSH_AUTH_SOCK=/var/run/com.apple.launchd.7Om2VuQHPN/Listeners
+TERM=xterm-256color
+TERM_PROGRAM=Apple_Terminal
+TERM_PROGRAM_VERSION=470.2
+TERM_SESSION_ID=8C6965CA-8BA3-4D9A-B7F4-36685A1AB6BB
+TMPDIR=/var/folders/w6/xh9133p96qz03y4cl2h3v4w00000gn/T/
+USER=tusharkalyani
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+__CFBundleIdentifier=com.apple.Terminal
+tusharkalyani@TUSHARs-MacBook-Air ~ % "C:\Program Files\MongoDB\Server\8.0\bin\mongod.exe" --replSet myReplSet --dbpath C:\data\db1 --port 27018 --bind_ip localhost
+zsh: command not found: C:\Program Files\MongoDB\Server\8.0\bin\mongod.exe
+tusharkalyani@TUSHARs-MacBook-Air ~ % 
+Last login: Tue Jun 16 18:26:20 on ttys002
+COLORTERM=truecolor
+FPATH=/opt/homebrew/share/zsh/site-functions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.9/functions
+HOME=/Users/tusharkalyani
+HOMEBREW_CELLAR=/opt/homebrew/Cellar
+HOMEBREW_PREFIX=/opt/homebrew
+HOMEBREW_REPOSITORY=/opt/homebrew
+INFOPATH=/opt/homebrew/share/info:
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-26.jdk/Contents/Home
+LANG=en_IN.UTF-8
+LOGNAME=tusharkalyani
+OLDPWD=/Users/tusharkalyani
+OSLogRateLimit=64
+PATH=/opt/homebrew/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin
+PWD=/Users/tusharkalyani
+SHELL=/bin/zsh
+SHLVL=1
+SSH_AUTH_SOCK=/var/run/com.apple.launchd.7Om2VuQHPN/Listeners
+TERM=xterm-256color
+TERM_PROGRAM=Apple_Terminal
+TERM_PROGRAM_VERSION=470.2
+TERM_SESSION_ID=58A996D7-664E-4E72-A021-9FE3287D6B49
+TMPDIR=/var/folders/w6/xh9133p96qz03y4cl2h3v4w00000gn/T/
+USER=tusharkalyani
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+__CFBundleIdentifier=com.apple.Terminal
+tusharkalyani@TUSHARs-MacBook-Air ~ % "C:\Program Files\MongoDB\Server\8.0\bin\mongod.exe" --replSet myReplSet --dbpath C:\data\db2 --port 27019 --bind_ip localhost
+zsh: command not found: C:\Program Files\MongoDB\Server\8.0\bin\mongod.exe
+tusharkalyani@TUSHARs-MacBook-Air ~ % 
+Last login: Tue Jun 16 18:26:28 on ttys003
+COLORTERM=truecolor
+FPATH=/opt/homebrew/share/zsh/site-functions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.9/functions
+HOME=/Users/tusharkalyani
+HOMEBREW_CELLAR=/opt/homebrew/Cellar
+HOMEBREW_PREFIX=/opt/homebrew
+HOMEBREW_REPOSITORY=/opt/homebrew
+INFOPATH=/opt/homebrew/share/info:
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-26.jdk/Contents/Home
+LANG=en_IN.UTF-8
+LOGNAME=tusharkalyani
+OLDPWD=/Users/tusharkalyani
+OSLogRateLimit=64
+PATH=/opt/homebrew/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin
+PWD=/Users/tusharkalyani
+SHELL=/bin/zsh
+SHLVL=1
+SSH_AUTH_SOCK=/var/run/com.apple.launchd.7Om2VuQHPN/Listeners
+TERM=xterm-256color
+TERM_PROGRAM=Apple_Terminal
+TERM_PROGRAM_VERSION=470.2
+TERM_SESSION_ID=0E0C5A11-0D83-4BAD-A469-CA2CBBC52E7A
+TMPDIR=/var/folders/w6/xh9133p96qz03y4cl2h3v4w00000gn/T/
+USER=tusharkalyani
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+__CFBundleIdentifier=com.apple.Terminal
+tusharkalyani@TUSHARs-MacBook-Air ~ % lsof -i :27017
+COMMAND     PID          USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+mongod    30233 tusharkalyani    9u  IPv4 0x9bd66277351e922e      0t0  TCP localhost:27017 (LISTEN)
+mongod    30233 tusharkalyani   10u  IPv6 0xee66d590fc4a810f      0t0  TCP localhost:27017 (LISTEN)
+mongod    30233 tusharkalyani   27u  IPv4 0xc613bbe9def971b1      0t0  TCP localhost:27017->localhost:51972 (ESTABLISHED)
+mongod    30233 tusharkalyani   28u  IPv4 0xdb291f436c786dee      0t0  TCP localhost:27017->localhost:51973 (ESTABLISHED)
+mongod    30233 tusharkalyani   29u  IPv4 0x86bd514703db736a      0t0  TCP localhost:27017->localhost:51974 (ESTABLISHED)
+mongod    30233 tusharkalyani   30u  IPv4 0xbf9618fe8cf3a443      0t0  TCP localhost:27017->localhost:51975 (ESTABLISHED)
+mongod    30233 tusharkalyani   31u  IPv4 0xa81f877bcfb167de      0t0  TCP localhost:27017->localhost:51976 (ESTABLISHED)
+mongod    30233 tusharkalyani   32u  IPv4 0xce3203dcae23d120      0t0  TCP localhost:27017->localhost:51977 (ESTABLISHED)
+mongod    30233 tusharkalyani   34u  IPv4 0xdb5f016950c34ea6      0t0  TCP localhost:27017->localhost:51978 (ESTABLISHED)
+mongod    30233 tusharkalyani   35u  IPv4 0x9a7468420188eb45      0t0  TCP localhost:27017->localhost:51979 (ESTABLISHED)
+mongod    30233 tusharkalyani   36u  IPv4 0x6469d0130c34d0e9      0t0  TCP localhost:27017->localhost:51980 (ESTABLISHED)
+mongod    30233 tusharkalyani   37u  IPv4 0xd142e7ead6663ef2      0t0  TCP localhost:27017->localhost:51981 (ESTABLISHED)
+mongod    30233 tusharkalyani   38u  IPv4 0x2480276863603938      0t0  TCP localhost:27017->localhost:51983 (ESTABLISHED)
+mongod    30233 tusharkalyani   39u  IPv4 0xaeae86b5e0a82970      0t0  TCP localhost:27017->localhost:51985 (ESTABLISHED)
+mongod    30233 tusharkalyani   40u  IPv4 0x29ab3d3ba70e3482      0t0  TCP localhost:27017->localhost:51986 (ESTABLISHED)
+mongod    30233 tusharkalyani   41u  IPv4 0xfe0f3b09f75dcbeb      0t0  TCP localhost:27017->localhost:51987 (ESTABLISHED)
+mongod    30233 tusharkalyani   42u  IPv4 0x8041219399c37baf      0t0  TCP localhost:27017->localhost:51988 (ESTABLISHED)
+mongod    30233 tusharkalyani   43u  IPv4 0x3ab84f9c9158d8e4      0t0  TCP localhost:27017->localhost:51990 (ESTABLISHED)
+mongod    30233 tusharkalyani   46u  IPv4 0x63534e2f4c7b10bc      0t0  TCP localhost:27017->localhost:51996 (ESTABLISHED)
+MongoDB   30658 tusharkalyani   24u  IPv4  0x6b5b02c40115ce9      0t0  TCP localhost:51972->localhost:27017 (ESTABLISHED)
+MongoDB   30658 tusharkalyani   25u  IPv4 0x95d8694f6e4abcc3      0t0  TCP localhost:51973->localhost:27017 (ESTABLISHED)
+MongoDB   30658 tusharkalyani   27u  IPv4 0x1704c8589be5151a      0t0  TCP localhost:51974->localhost:27017 (ESTABLISHED)
+MongoDB   30658 tusharkalyani   28u  IPv4  0x5c97be9496b2e26      0t0  TCP localhost:51975->localhost:27017 (ESTABLISHED)
+MongoDB   30658 tusharkalyani   29u  IPv4 0xc63e909099d55c6c      0t0  TCP localhost:51976->localhost:27017 (ESTABLISHED)
+MongoDB   30658 tusharkalyani   30u  IPv4 0x4857650cdb024edd      0t0  TCP localhost:51977->localhost:27017 (ESTABLISHED)
+MongoDB   30658 tusharkalyani   31u  IPv4 0x942e74eba2495243      0t0  TCP localhost:51978->localhost:27017 (ESTABLISHED)
+MongoDB   30658 tusharkalyani   32u  IPv4 0x24e9835d1f0d264b      0t0  TCP localhost:51979->localhost:27017 (ESTABLISHED)
+MongoDB   30658 tusharkalyani   33u  IPv4 0x813cc2a6d24c2ffd      0t0  TCP localhost:51980->localhost:27017 (ESTABLISHED)
+MongoDB   30658 tusharkalyani   34u  IPv4 0x4cd4a4f10e7b4122      0t0  TCP localhost:51981->localhost:27017 (ESTABLISHED)
+MongoDB   30658 tusharkalyani   38u  IPv4  0x91439fdc3d4bbf9      0t0  TCP localhost:51983->localhost:27017 (ESTABLISHED)
+MongoDB   30658 tusharkalyani   39u  IPv4 0xbaaea8cb39fa68bd      0t0  TCP localhost:51985->localhost:27017 (ESTABLISHED)
+MongoDB   30658 tusharkalyani   40u  IPv4 0x6a77f744eaaa3e9b      0t0  TCP localhost:51986->localhost:27017 (ESTABLISHED)
+MongoDB   30658 tusharkalyani   41u  IPv4 0xf8ea77ef7419629e      0t0  TCP localhost:51987->localhost:27017 (ESTABLISHED)
+MongoDB   30658 tusharkalyani   42u  IPv4 0xdb6e33e792b5a869      0t0  TCP localhost:51988->localhost:27017 (ESTABLISHED)
+MongoDB   30658 tusharkalyani   43u  IPv4  0x5d47c5ecbff5f7a      0t0  TCP localhost:51990->localhost:27017 (ESTABLISHED)
+MongoDB   30658 tusharkalyani   46u  IPv4 0x52f4744ed6bf9659      0t0  TCP localhost:51996->localhost:27017 (ESTABLISHED)
+tusharkalyani@TUSHARs-MacBook-Air ~ % 
