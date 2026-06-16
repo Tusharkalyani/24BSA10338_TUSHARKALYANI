@@ -1,0 +1,80 @@
+1.Find all students from the CS department with marks greater than 80.
+sol: db.students.find({dept:{$eq:'CS'},marks:{$gte:80}})
+
+2. Find students whose marks are between 60 and 85 (inclusive) using $gte and $lte.
+sol:db.students.find({marks:{$gte:60},marks:{$lte:85}})
+
+3. Find all students who are either from IT or ECE department using $in operator.
+sol:db.students.find({dept:{$in:["CS","ECE"]}})
+
+4. Find students NOT in the CS department using $nin and project only name and dept.
+sol:db.students.find({dept:{$nin:["CS"]}},{_id:0,name:1,dept:1})
+
+6.Find total revenue per category using $group and $sum on a computed field (price × sold).
+sol:db.products.aggregate([{$group:{_id:'$category',TotalRevenue:{$sum:{$multiply:['$price','$sold']}}}}])
+
+7. Use aggregation to find total number of students and average marks per department.
+sol:db.students.aggregate([{$group:{_id:'$dept',TotalStudent:{$sum:1}}}])
+
+8. Remove the 'scholarship' field from all students using $unset.
+sol:db.students.update({},{$unset:{scholarship:""}})
+
+9. Add a new field 'scholarship' with value false to all CS students using $set.
+sol:db.students.updateMany({dept:'CS'},{$set:{scholarship:false}})
+
+10. Increment marks of student with _id:6 by 10 using $inc.
+sol:db.students.updateOne({_id:6},{$inc:{marks:10}})
+
+11. Find the 3rd and 4th highest scoring students using sort, skip, and limit (pagination).
+sol:db.students.find({},{name:1,marks:1}).sort({marks:-1}).skip(2).limit(2)
+
+12. Find employees whose salary is greater than 50000 and experience greater than 5.
+sol:db.employees.find({salary:{$gte:50000},experience:{$gte:5}})
+
+13. Find employees whose skills array size is greater than 2.
+sol:db.employees.find({
+  $expr: {
+    $gt: [
+      { $size: "$skills" },
+      2
+    ]
+  }
+})
+
+
+14. Find departments whose average salary is greater than 50000.
+Sol:db.employees.aggregate([
+  {
+    $group: {
+      _id: "$department",
+      avgSalary: { $avg: "$salary" }
+    }
+  },
+  {
+    $match: {
+      avgSalary: { $gt: 50000 }
+    }
+  }
+])
+
+
+15. Find minimum salary in each department.
+db.employees.aggregate([
+  {
+    $group: {
+      _id: "$department",
+      minSalary: { $min: "$salary" }
+    }
+  }
+])
+
+
+16. Rename field city to location.
+sol:db.employees.updateMany({},{$rename:{"city":"location"}})
+
+
+17. Find products where stock is of type Number using $type operator.
+sol:db.products.find({stock:{$type:"number"}})
+
+18. Set the active status to true for all inactive students using updateMany and $set.
+sol:db.students.updateMany({active:false},{$set:{active:true}})
